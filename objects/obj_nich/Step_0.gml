@@ -6,10 +6,12 @@ upkey = keyboard_check(vk_up)
 
 if keyboard_check(vk_shift) {
 	mspd = 4 
+	image_speed = 1.5
 	}
 	
 else
 	{
+		image_speed = 1
 		mspd = 2
 	}
 
