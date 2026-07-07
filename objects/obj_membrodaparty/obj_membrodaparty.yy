@@ -34,6 +34,9 @@
     "name":"spr_nichdown",
     "path":"sprites/spr_nichdown/spr_nichdown.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_nichdown",
+    "path":"sprites/spr_nichdown/spr_nichdown.yy",
+  },
   "visible":true,
 }
