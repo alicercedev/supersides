@@ -27,9 +27,9 @@ function battlemenu() {
 }
 
 state = BattleState.MENU;
-
+atk = 10
 opcao = 0;
 alvo = 0;
 qtalvos = irandom_range(1,4);
-inimigos = array_create(qtalvos, 0)
+hpinimigo = obj_filho.hp
 

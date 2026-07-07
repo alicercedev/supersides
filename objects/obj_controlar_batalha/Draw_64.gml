@@ -13,6 +13,6 @@ draw_text(40, 360, obj_filho.id_inimigo);
 
 if state = BattleState.SELECT_ENEMY {
 draw_text(40,420,obj_filho.nome);
-draw_sprite(spr_cursor,0,10,420+opcao*40);
+draw_sprite(spr_cursor,0,10,440+opcao*40);
 }
 

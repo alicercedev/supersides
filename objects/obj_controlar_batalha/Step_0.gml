@@ -34,4 +34,10 @@ if keyboard_check_pressed(ord("Z"))
 }
 }
 
+if state = BattleState.SELECT_ENEMY {
+opcao = clamp(opcao,0,qtalvos)
+}
+if hpinimigo <= 0 {
+	room_goto(Room1)
+}
 #endregion
