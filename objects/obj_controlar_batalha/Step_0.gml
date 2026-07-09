@@ -34,9 +34,20 @@ if keyboard_check_pressed(ord("Z"))
 }
 }
 
-if state = BattleState.SELECT_ENEMY {
-opcao = clamp(opcao,0,qtalvos)
+else if state = BattleState.SELECT_ENEMY {
+	if keyboard_check_pressed(ord("Z"))
+	{
+		switch(opcao)
+		{
+			case 0:
+			hpinimigo = hpinimigo - atk
+			state = BattleState.MENU
+			break;
+			
+		}
+	}
 }
+
 if hpinimigo <= 0 {
 	room_goto(Room1)
 }

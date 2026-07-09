@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_walkside",
   "bboxMode":0,
-  "bbox_bottom":41,
+  "bbox_bottom":43,
   "bbox_left":13,
   "bbox_right":34,
   "bbox_top":11,
