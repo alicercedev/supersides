@@ -18,12 +18,10 @@ switch(ld)
 {
 	case dir.down:
 	sprite_index = spr_walkdown;
-	image_xscale = 1
 	break;
 	
 	case dir.up:
 	sprite_index = spr_upwalk;
-	image_xscale = 1
 	break;
 	
 	case dir.left:
