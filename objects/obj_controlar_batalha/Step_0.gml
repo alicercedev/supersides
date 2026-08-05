@@ -1,54 +1,55 @@
 #region --controles do menu
-if keyboard_check_pressed(vk_down)
-{
-	opcao++;
-}
+opcao += keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up)
 
-if keyboard_check_pressed(vk_up)
-{
-	opcao--;
-}
-
-opcao = clamp(opcao,0,5)
+opcao = clamp(opcao,0,array_length(atu_texto)-1)
 #endregion
 
 #region --MENUS DA BRIGA
 
-if state = BattleState.MENU {
-if keyboard_check_pressed(ord("Z"))
-{
-	switch(opcao)
-	{
-		case 0:
-		state = BattleState.SELECT_ENEMY
-		break;
-		
-		case 1:
-		state = BattleState.PLAYER_CHOICE
-		break;
-		
-		case 5:
-		room_goto(Room1)
-		break;
-	}
-}
+switch (state) {
+	case BattleState.MENU : {
+        atu_texto = textos_menu1
+        if keyboard_check_pressed(ord("Z")){
+        	switch(opcao)
+        	{
+        		case 0:
+        		state = BattleState.SELECT_ENEMY
+        		break;
+        		
+        		case 1:
+        		state = BattleState.PLAYER_CHOICE
+        		break;
+        		
+        		case 5:
+        		room_goto(Room1)
+        		break;
+        	}
+        }
+        break
+    }
+    case BattleState.SELECT_ENEMY : {
+        var names = []
+        with obj_filho{
+            array_push(names,string(self.index) + " " + self.data.nome)
+        }
+        atu_texto = names
+        
+        if keyboard_check_pressed(ord("Z")){
+            inimigos[opcao].dano(5)
+            state = BattleState.ENEMY_TURN
+            opcao = 0
+        }
+    }    
 }
 
-else if state = BattleState.SELECT_ENEMY {
-	if keyboard_check_pressed(ord("Z"))
-	{
-		switch(opcao)
-		{
-			case 0:
-			hpinimigo = hpinimigo - atk
-			state = BattleState.MENU
-			break;
-			
-		}
-	}
+if BattleState.MENU != state and BattleState.ENEMY_TURN != state and keyboard_check_pressed(ord("X")){
+    state = BattleState.MENU
 }
 
-if hpinimigo <= 0 {
+if state = BattleState.SELECT_ENEMY {
+opcao = clamp(opcao,0,qtalvos)
+}
+if !instance_exists(obj_filho) {
 	room_goto(Room1)
 }
 #endregion

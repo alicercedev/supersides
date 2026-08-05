@@ -1,26 +1,15 @@
-if state == BattleState.MENU {
-draw_text(40,420,"Atacar");
-draw_text(40,460,"Habilidades");
-draw_text(40,500,"Especial");
-draw_text(40,540,"Defender");
-draw_text(40,580,"Item");
-draw_text(40,620,"Sair");
-draw_sprite(spr_cursor,0,10,440+opcao*40);
-draw_text(40, 360, obj_filho.id_inimigo);
-draw_text(40, 380, obj_filho.nome);
-draw_text(40, 400, obj_filho.hp);
 
+if BattleState.ENEMY_TURN != state{ 
+    for(var i = 0;i < array_length(atu_texto);i += 1){
+        var xx = 90
+        var yy = room_height/2 + 60 + 40*i
+        
+        var str = atu_texto[i]
+        
+        if i = opcao{
+            draw_sprite_ext(spr_cursor,0,xx,yy + 20,2,2,0,c_white,1);
+        }
+        
+        draw_text_transformed(xx,yy,str,2,2,0) 
+    }
 }
-
-
-
-if state = BattleState.SELECT_ENEMY {
-	for (var i = 0; i < qtalvos; ++i) {
-draw_text(40,420 + i * 40,obj_filho.nome);
-	}
-draw_sprite(spr_cursor,0,10,440+opcao*40);
-draw_text(40, 360, obj_filho.id_inimigo);
-draw_text(40, 380, obj_filho.nome);
-draw_text(40, 400, obj_filho.hp);
-}
-

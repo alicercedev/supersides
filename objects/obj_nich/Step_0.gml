@@ -3,15 +3,29 @@ leftkey = keyboard_check(vk_left)
 downkey = keyboard_check(vk_down)
 rightkey = keyboard_check(vk_right)
 upkey = keyboard_check(vk_up)
+intkey = keyboard_check(ord("Z"))
 
 if keyboard_check(vk_shift) {
 	mspd = 4 
+	image_speed = 1.5
 	}
 	
 else
 	{
+		image_speed = 1
 		mspd = 2
 	}
+
+
+
+if keyboard_check_pressed(vk_space)
+{
+	criadialogo([{
+	name: "testando",
+	msg: "SKIBISDLFKJADSLKJGFHSDAJKLFHASDJKGHSDALKÇFJASDKJNHCXMN,VXZCM,NVBNMN"
+	}])
+}
+
 
 hspd = (rightkey - leftkey) * mspd
 vspd = (downkey - upkey) * mspd
@@ -24,6 +38,7 @@ if place_meeting(x, y+vspd, obj_colisao) == true{
 }
 
 if place_meeting(x,y,obj_inimigo) == true{
+    global.inimigo_index_guide = 0
 	room_goto(Room2)
 }
 
