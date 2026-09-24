@@ -1,0 +1,10 @@
+texto = "0";
+cor = c_white;
+vida = 50;
+y_chao = y + 60;
+vspd_txt = -5;
+hspd_txt = choose(-1, 1) * random_range(0.5, 1.5);
+gravidade = 0.4;
+amortecimento = 0.4;
+alpha_txt = 1;
+depth = -200;

@@ -1,115 +1,46 @@
-#region --coisa básica
-leftkey = keyboard_check(vk_left)
-downkey = keyboard_check(vk_down)
-rightkey = keyboard_check(vk_right)
-upkey = keyboard_check(vk_up)
+var h = keyboard_check(vk_right) - keyboard_check(vk_left);
+var v = keyboard_check(vk_down)  - keyboard_check(vk_up);
 
-if keyboard_check(vk_shift) {
-	mspd = 4 
-	image_speed = 1.5
-	}
-	
-else
-	{
-		image_speed = 1
-		mspd = 2
-	}
+hspd = h * spd;
+vspd = v * spd;
 
-hspd = (rightkey - leftkey) * mspd
-vspd = (downkey - upkey) * mspd
-
-if place_meeting(x+hspd, y, obj_colisao) == true{
-	hspd = 0
-}
-if place_meeting(x, y+vspd, obj_colisao) == true{
-	vspd = 0
+if (!place_meeting(x + hspd, y, obj_colisao)){
+    x += hspd;
+} else {
+    while (!place_meeting(x + sign(hspd), y, obj_colisao) && hspd != 0){
+        x += sign(hspd);
+    }
+    hspd = 0;
 }
 
-if place_meeting(x,y,obj_inimigo) == true{
-    global.inimigo_index_guide = 0
-	room_goto(Room2)
+if (!place_meeting(x, y + vspd, obj_colisao)){
+    y += vspd;
+} else {
+    while (!place_meeting(x, y + sign(vspd), obj_colisao) && vspd != 0){
+        y += sign(vspd);
+    }
+    vspd = 0;
 }
 
+var movendo = (h != 0 || v != 0);
 
+if (v > 0) direcao = dir.down;
+if (v < 0) direcao = dir.up;
+if (h < 0) { direcao = dir.left;  image_xscale = -1; }
+if (h > 0) { direcao = dir.right; image_xscale = 1;  }
 
-
-x += hspd
-y += vspd
-#endregion
-
-#region --sprites e movimentação
-if (vspd > 0)
-{
-	sprite_index = spr_walkdown
-	image_xscale = 1
-	ld = dir.down
+switch (direcao){
+    case dir.down:
+        sprite_index = movendo ? spr_walkdown : spr_nichdown;
+        break;
+    case dir.up:
+    sprite_index = movendo ? spr_upwalk : spr_nichup;
+    break;
+    case dir.left:
+    case dir.right:
+        sprite_index = movendo ? spr_walkside : spr_nichsides;
+        break;
 }
 
-else if vspd < 0
-{
-	sprite_index = spr_upwalk
-	image_xscale = 1
-	ld = dir.up
-}
-
-else if hspd > 0
-{
-	sprite_index = spr_walkside
-	image_xscale = 1
-	ld = dir.right
-	
-}
-
-else if hspd < 0
-{
-	sprite_index = spr_walkside
-	image_xscale = -1
-	ld = dir.left
-}
-
-else 
-{
-switch(ld)
-{
-	case dir.down:
-	sprite_index = spr_nichdown;
-	break;
-	
-	case dir.up:
-	sprite_index = spr_nichup;
-	break;
-	
-	case dir.left:
-	sprite_index = spr_nichsides;
-	image_xscale = -1
-	break;
-	
-	case dir.right:
-	sprite_index = spr_nichsides;
-	break;
-}
-	
-}
-
-
-
-
-
-#endregion
-
-#region --caminho do npc
-if (hspd !=0 || vspd != 0)
-{
-	array_push(caminho, [x,y, ld]);
-	
-	if (array_length(caminho) > 300)
-	{
-		array_delete(caminho,0,1);
-	}
-}
-
-if (array_length(caminho) > 300)
-{
-	array_delete(caminho,0,1)
-}
-#endregion
+image_speed = movendo ? 1 : 0;
+if (!movendo) image_index = 0;

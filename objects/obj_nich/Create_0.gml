@@ -1,22 +1,28 @@
-hspd = 0
-vspd = 0
-mspd = 2
+spd = 3;
 
-caminho = [];
+hspd = 0;
+vspd = 0;
 
-enum dir
-{
-down,
-up,
-left,
-right
+enum dir {
+    down,
+    up,
+    left,
+    right
 }
-ld = dir.down
-hp = 80
-mhp = 80
-en = 40
-men = 40
-atk = 6
-def = 5
-agl = 1
-cri = 20
+direcao = dir.down;
+
+// stats de combate
+hp  = 80;
+mhp = 80;
+en  = 40;
+men = 40;
+atk = 6;
+def = 5;
+agl = 1;
+cri = 20;
+
+// se já existir HP salvo de uma batalha anterior, usa ele em vez do valor cheio :P
+if (variable_global_exists("nich_hp")) hp = global.nich_hp;
+if (variable_global_exists("nich_en")) en = global.nich_en;
+
+sprite_index = spr_nichdown;
