@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"combate",
-    "path":"folders/Sprites/combate.yy",
+    "name":"nich",
+    "path":"folders/Sprites/combate/nich.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
