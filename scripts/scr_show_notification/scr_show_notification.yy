@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_show_notification",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_show_notification",
+  "parent":{
+    "name":"dialog",
+    "path":"folders/Scripts/dialog.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

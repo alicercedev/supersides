@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_scene_shy",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_scene_shy",
+  "parent":{
+    "name":"dialog",
+    "path":"folders/Scripts/dialog.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

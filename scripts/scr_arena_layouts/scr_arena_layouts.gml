@@ -1,8 +1,5 @@
 function scr_arena_layouts(x_arena, y_arena, largura, altura) {
-	
-show_debug_message("Sorteando layout...");
-
-	var layouts = [];
+    var layouts = [];
 
     // Layout 0: duas plataformas, escada crescente
     layouts[0] = {
@@ -15,7 +12,8 @@ show_debug_message("Sorteando layout...");
             [x_arena + 260, y_arena + altura - 200],
             [x_arena + largura - 60, y_arena + altura - 60],
             [x_arena + largura/2,    y_arena + altura - 60]
-        ]
+        ],
+        bandeira: [x_arena + 260, y_arena + altura - 185] // topo real da 2ª plataforma
     };
 
     // Layout 1: três plataformas em zigue-zague
@@ -30,7 +28,8 @@ show_debug_message("Sorteando layout...");
             [x_arena + 205, y_arena + altura - 180],
             [x_arena + 325, y_arena + altura - 120],
             [x_arena + largura/2, y_arena + altura - 60]
-        ]
+        ],
+        bandeira: [x_arena + 325, y_arena + altura - 39] // topo real da 3ª plataforma
     };
 
     // Layout 2: plataforma central única, mais larga
@@ -43,10 +42,9 @@ show_debug_message("Sorteando layout...");
             [x_arena + largura/2 + 30, y_arena + altura - 160],
             [x_arena + 50, y_arena + altura - 60],
             [x_arena + largura - 50, y_arena + altura - 60]
-        ]
+        ],
+        bandeira: [x_arena + largura - 50, y_arena + altura - 39] // topo real do chão
     };
 
-    var escolhido = irandom(array_length(layouts) - 1);
-show_debug_message("Layout escolhido: " + string(escolhido));
-return layouts[escolhido];
+    return layouts[irandom(array_length(layouts) - 1)];
 }
