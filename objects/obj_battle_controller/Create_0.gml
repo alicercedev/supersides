@@ -1,8 +1,8 @@
 randomize();
 scr_itens_init();
-global.nich_en = 0;
+global.em_batalha = true;
 
-enum BattleState { MENU, SELECT_ENEMY, SELECT_HABILIDADE, SELECT_ITEM, ATACANDO, MENSAGEM, ENEMY_TURN, VITORIA, DERROTA }
+enum BattleState { MENU, SELECT_ENEMY, SELECT_HABILIDADE, SELECT_ITEM, ATACANDO, MENSAGEM, MENSAGEM2, TICK_QUEIMADURA, ENEMY_TURN, VITORIA, DERROTA }
 
 state = BattleState.MENU;
 opcao = 0;
@@ -16,6 +16,7 @@ timer_acao = 0;
 usar_mensagem = false;
 
 mensagem_batalha = "";
+mensagem_batalha2 = "";
 letras_mostradas = 0;
 
 global.nich_defendendo = false;
@@ -23,6 +24,8 @@ global.nich_atacando = false;
 global.nich_conjurando = false;
 global.nich_usando_item = false;
 global.debug_mostrar_vida = true;
+global.nich_en = 0;
+global.nich_buff_fogo = 1;
 
 inimigos = [];
 atacante = noone;

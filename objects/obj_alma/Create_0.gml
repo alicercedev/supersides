@@ -1,6 +1,6 @@
-sprite_index = spr_nichmaligno;
-image_xscale = 0.8;
-image_yscale = 0.8;
+sprite_index = spr_mini_nich;
+image_xscale = 4.5;
+image_yscale = 4.5;
 depth = -100;
 
 hspd = 0;

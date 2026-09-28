@@ -2,7 +2,7 @@ tempo_restante--;
 timer_ataque++;
 
 switch (padrao){
-    case 0: // chuva reta caindo do topo
+    case 0:
         if (irandom(25) == 0){
             var p = instance_create_layer(x + irandom(largura), y, "Instances", obj_projetil_inimigo);
             p.hspd_p = 0;
@@ -10,7 +10,7 @@ switch (padrao){
         }
         break;
 
-    case 1: // chuva diagonal
+    case 1:
         if (irandom(20) == 0){
             var vem_da_esquerda = choose(true, false);
             var p = instance_create_layer(vem_da_esquerda ? x : x + largura, y, "Instances", obj_projetil_inimigo);
@@ -19,7 +19,7 @@ switch (padrao){
         }
         break;
 
-    case 2: // varredura lateral, numa altura fixa (cuidado ao pular!)
+    case 2:
         if (timer_ataque mod 50 == 0){
             var p = instance_create_layer(x, y + 60, "Instances", obj_projetil_inimigo);
             p.hspd_p = 2;
@@ -28,7 +28,7 @@ switch (padrao){
         break;
 }
 
-if (!instance_exists(obj_estrela_mana) && tempo_restante > 0){
+if (saiu_pela_bandeira && tempo_restante > 0){
     tempo_restante = 0;
 }
 
@@ -36,8 +36,9 @@ if (tempo_restante <= 0){
     with (obj_projetil_inimigo) instance_destroy();
     with (obj_estrela_mana) instance_destroy();
     with (obj_plataforma_bloco) instance_destroy();
+    with (obj_bandeira_saida) instance_destroy();
     if (instance_exists(obj_alma)) instance_destroy(obj_alma);
     global.nich_defendendo = false;
-    obj_battle_controller.state = BattleState.MENU;
+    obj_battle_controller.state = BattleState.TICK_QUEIMADURA;
     instance_destroy();
 }

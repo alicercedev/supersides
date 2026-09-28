@@ -85,7 +85,7 @@ if (mostrar_menu_hud){
             }
 
             draw_set_color(c_white);
-            draw_text(submenu_x + 20, submenu_y + 15, "Escolha o alvo:");
+            draw_text(submenu_x + 20, submenu_y + 15, "Escolha um alvo:");
             for (var i = 0; i < array_length(inimigos); i++){
                 draw_set_color((i == opcao) ? c_yellow : c_white);
                 draw_text(submenu_x + 30, submenu_y + 50 + i*36, inimigos[i].nome);
@@ -116,30 +116,42 @@ if (mostrar_menu_hud){
             break;
 
         case BattleState.SELECT_ITEM:
-            for (var i = 0; i < array_length(opcoes_menu); i++){
-                var y_pos = y_start + i*linha_h;
-                draw_set_color(c_gray);
-                if (opcoes_icon[i] != noone){
-                    var spr = opcoes_icon[i];
-                    var escala_x = icon_size / sprite_get_width(spr);
-                    var escala_y = icon_size / sprite_get_height(spr);
-                    draw_sprite_ext(spr, 0, icon_x, y_pos, escala_x, escala_y, 0, c_gray, 1);
-                }
-                draw_text(texto_x, y_pos - 14, opcoes_menu[i]);
-            }
+    for (var i = 0; i < array_length(opcoes_menu); i++){
+        var y_pos = y_start + i*linha_h;
+        draw_set_color(c_gray);
+        if (opcoes_icon[i] != noone){
+            var spr = opcoes_icon[i];
+            var escala_x = icon_size / sprite_get_width(spr);
+            var escala_y = icon_size / sprite_get_height(spr);
+            draw_sprite_ext(spr, 0, icon_x, y_pos, escala_x, escala_y, 0, c_gray, 1);
+        }
+        draw_text(texto_x, y_pos - 14, opcoes_menu[i]);
+    }
 
-            var total_itens = scr_itens_count();
-            draw_set_color(c_white);
-            draw_text(submenu_x + 20, submenu_y + 15, "Itens:");
-            for (var i = 0; i < total_itens; i++){
-                draw_set_color((i == opcao) ? c_yellow : c_white);
-                draw_text(submenu_x + 30, submenu_y + 50 + i*36, global.itens_nome[i] + " x" + string(global.itens_qtd[i]) + " (Cura: " + string(global.itens_cura[i]) + ")");
-            }
-            break;
+    var indices_disponiveis_draw = [];
+    for (var i = 0; i < scr_itens_count(); i++){
+        if (global.itens_qtd[i] > 0){
+            array_push(indices_disponiveis_draw, i);
+        }
+    }
+
+    draw_set_color(c_white);
+    draw_text(submenu_x + 20, submenu_y + 15, "Itens:");
+
+    if (array_length(indices_disponiveis_draw) == 0){
+        draw_text(submenu_x + 30, submenu_y + 50, "Nenhum item disponível.");
+    } else {
+        for (var i = 0; i < array_length(indices_disponiveis_draw); i++){
+            var idx = indices_disponiveis_draw[i];
+            draw_set_color((i == opcao) ? c_yellow : c_white);
+            draw_text(submenu_x + 30, submenu_y + 50 + i*36, global.itens_nome[idx] + " x" + string(global.itens_qtd[idx]));
+        }
+    }
+    break;
     }
 }
 
-if (state == BattleState.MENSAGEM){
+if (state == BattleState.MENSAGEM || state == BattleState.MENSAGEM2){
     var msg_x = 30;
     var msg_y = 480;
     var msg_w = 700;
@@ -152,7 +164,8 @@ if (state == BattleState.MENSAGEM){
     draw_set_color(c_white);
     draw_rectangle(msg_x, msg_y, msg_x + msg_w, msg_y + msg_h, true);
 
-    var texto_visivel = string_copy(mensagem_batalha, 1, floor(letras_mostradas));
+    var texto_fonte = (state == BattleState.MENSAGEM) ? mensagem_batalha : mensagem_batalha2;
+    var texto_visivel = string_copy(texto_fonte, 1, floor(letras_mostradas));
     draw_text(msg_x + 20, msg_y + 20, texto_visivel);
 }
 

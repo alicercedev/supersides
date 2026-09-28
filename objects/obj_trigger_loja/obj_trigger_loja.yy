@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_alma",
+  "%Name":"obj_trigger_loja",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_alma",
+  "name":"obj_trigger_loja",
   "overriddenProperties":[],
   "parent":{
-    "name":"personagens",
-    "path":"folders/Objetos/batalha/personagens.yy",
+    "name":"Objetos",
+    "path":"folders/Objetos.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_mini_nich",
-    "path":"sprites/spr_mini_nich/spr_mini_nich.yy",
+    "name":"spr_item_hud",
+    "path":"sprites/spr_item_hud/spr_item_hud.yy",
   },
   "spriteMaskId":null,
   "visible":true,

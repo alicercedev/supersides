@@ -12,3 +12,6 @@ morto = false;
 hp_anterior = hp;
 dano_flash = 0;
 death_timer = 0;
+
+queimado = false;
+queimado_dano = 3;

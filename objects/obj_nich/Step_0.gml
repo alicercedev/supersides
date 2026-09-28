@@ -1,3 +1,11 @@
+depth = -y;
+
+if (!variable_global_exists("em_dialogo")){
+    global.em_dialogo = false;
+}
+
+if (global.em_dialogo) exit;
+
 var h = keyboard_check(vk_right) - keyboard_check(vk_left);
 var v = keyboard_check(vk_down)  - keyboard_check(vk_up);
 

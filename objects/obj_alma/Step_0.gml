@@ -52,3 +52,7 @@ if (invuln <= 0 && place_meeting(x, y, obj_projetil_inimigo)){
     global.nich_hp = max(global.nich_hp, 0);
     invuln = 45;
 }
+
+if (place_meeting(x, y, obj_bandeira_saida)){
+    obj_battle_arena.saiu_pela_bandeira = true;
+}

@@ -5,6 +5,7 @@ y = room_height/2 - altura/2;
 depth = 100;
 
 tempo_restante = room_speed * 8;
+saiu_pela_bandeira = false;
 
 var lista_padroes = obj_battle_controller.atacante.padroes;
 padrao = lista_padroes[irandom(array_length(lista_padroes) - 1)];
@@ -28,5 +29,8 @@ for (var i = 0; i < array_length(layout.estrelas); i++){
 }
 estrelas_total = array_length(layout.estrelas);
 
+// bandeira de saída, na posição definida pelo layout
+instance_create_layer(layout.bandeira[0], layout.bandeira[1], "Instances", obj_bandeira_saida);
+
 // jogador
-instance_create_layer(x + 30, y + altura - 60, "Instances", obj_alma);
+instance_create_layer(x + 30, y + altura - 90, "Instances", obj_alma);
