@@ -1,8 +1,8 @@
 {
   "$GMSprite":"v2",
   "%Name":"florestaseuxal",
-  "bboxMode":0,
-  "bbox_bottom":284,
+  "bboxMode":2,
+  "bbox_bottom":270,
   "bbox_left":0,
   "bbox_right":191,
   "bbox_top":0,
